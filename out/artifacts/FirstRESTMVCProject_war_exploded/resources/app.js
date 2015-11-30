@@ -3,9 +3,25 @@ var myApp = angular.module('myApp', []);
 
 myApp.controller('firstCtrl', function ($scope, $http) {
     $scope.arr = [];
-    $http.get('/api/').then(function (response) {
-        $scope.arr = response.data;
-    });
-    //$scope.arr = ['asdas',123];
+
+
+    $scope.addNote = function (note) {
+        $http
+            .post('/api/', {name: note.name, body: note.body})
+            .then(function(response){
+                update();
+            });
+    };
+
+    var update = function() {
+        $http
+            .get('/api/')
+            .then(function (response) {
+                $scope.arr = response.data;
+            });
+    };
+
+    update();
+
 
 })
