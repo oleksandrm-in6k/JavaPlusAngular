@@ -1,7 +1,6 @@
 var myApp = angular.module('myApp', []);
 
 
-
 myApp.controller('firstCtrl', function ($scope, $http, notesFactory) {
     $scope.notes = [];
 
